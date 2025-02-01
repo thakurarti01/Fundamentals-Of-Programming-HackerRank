@@ -8,35 +8,31 @@ using namespace std;
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
-    int size,i,location,insert;
+    int n,at,num;
+    cin>>n;
     
-    cin>>size;
-    int arr[size+1];
+    vector<int>arr(n);
     
-    for(i=0;i<size;i++){
+    for(int i=0; i<n; i++)
+    {
         cin>>arr[i];
     }
     
-    cin>>location;
-    cin>>insert;
+    cin>>at>>num;
     
-    location--; //Adjusting for Zero-Based Indexing:
-    
-    if(location>size||location<0){
-        cout<<"Invalid Input"<<endl;
+    if(at>n||at<0)
+    {
+        cout<<"Invalid Input";
         return 0;
     }
     
-    for (i = size; i > location; i--) {
-    arr[i] = arr[i - 1];
-    }
-    
-    arr[location] = insert;
-    size++;
+    arr.insert(arr.begin()+at-1,num);
     
     cout<<"Array after insertion is"<<endl;
-    for(i =0; i<size; i++){
-        cout<<arr[i]<<endl;
+    for(int i: arr)
+    {
+        cout<<i<<endl;
     }
+    
     return 0;
 }
